@@ -1,25 +1,13 @@
 Title: MetaboNameStandard
-Authors@R: 
-  c(person(given="Katja",family= "Danielzik", email="katja.danielzik@uni-due.de", 
-           role = c("aut", "cre"),
-           comment=c(ORCID="0009-0007-5021-6212")),
-    person(given="Simo",family="Kitanovski",role="ctb",
-           comment=c(ORCID="0000-0003-2909-5376")),
-    person(given="Johann",family="Matschke",role="ctb",
-           comment=c(ORCID="0000-0003-4878-8741")),
-    person(given="Daniel",family="Hoffmann",role="ctb",
-           comment=c(ORCID="0000-0003-2973-7869")))
+Authors: 
+  c(person(given="Willson",family="Tijoe",role=c("aut","cre")),
+    person(given="Katja",family= "Danielzik", email="katja.danielzik@uni-due.de", 
+           role = c("aut"),
+           comment=c(ORCID="0009-0007-5021-6212")))
 URL: https://github.com/KatjaDanielzik/MetaboNameStandard
-Description: MetaboDynamics is an R-package that provides a framework of 
-  probabilistic models to analyze longitudinal metabolomics data. It enables 
-  robust estimation of mean concentrations despite varying spread between 
-  timepoints and reports differences between timepoints as well as metabolite 
-  specific dynamics profiles that can be used for identifying "dynamics clusters" 
-  of metabolites of similar dynamics. Provides probabilistic over-representation 
-  analysis of KEGG functional modules and pathways as well as comparison between
-  clusters of different experimental conditions.
 License: GPL (>= 3)
 Depends: 
   Llama3.3 70B Instruct
 SystemRequirements: 
-  
+  Llama 3.3 70B Requirements: GPU Minimum: 24GB VRAM Recommended: NVIDIA GPU with at least 35GB VRAM (e.g., A100 or H100) 
+  Optimal setup: Dual NVIDIA RTX 3090 (48GB combined VRAM) RAM Minimum: 32GB Recommended: 64GB or more, especially for larger datasets CPU Minimum: 8-core processor
