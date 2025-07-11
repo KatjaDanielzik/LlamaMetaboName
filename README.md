@@ -12,9 +12,9 @@ Large Language models like Llama3.3 have learned which metabolite names are ofte
 
 System prompt and parameter settings for llama3.3 70B
 Llama 3.3 70B Requirements:
-GPU Minimum: 24GB VRAM Recommended: NVIDIA GPU with at least 35GB VRAM (e.g., A100 or H100) Optimal setup: Dual NVIDIA RTX 3090 (48GB combined VRAM)
-RAM Minimum: 32GB Recommended: 64GB or more, especially for larger datasets
-CPU Minimum: 8-core processor
+- GPU Minimum: 24GB VRAM Recommended: NVIDIA GPU with at least 35GB VRAM (e.g., A100 or H100) Optimal setup: Dual NVIDIA RTX 3090 (48GB combined VRAM)
+- RAM Minimum: 32GB Recommended: 64GB or more, especially for larger datasets
+- CPU Minimum: 8-core processor
  
 # Install ollama
 ```{bash}
