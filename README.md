@@ -1,6 +1,6 @@
-# MetaboliteNameStandardization: a system prompt for Llama3.3 to facilitate standardization of metabolite names
-# Authors
-Willson Tjioe, Katja Danielzik
+# LlamaMetaboName: a system prompt for Llama3.3 to facilitate standardization of metabolite names
+
+“Llama 3.3 is licensed under the Llama 3.3 Community License, Copyright © Meta Platforms, Inc. All Rights Reserved.”
 
 # Overview
 One of the crucial steps in the Metabolomics workflow is the matching of metabolite names provided by a collaborator to database entry, to for example retrieve IDs for downstream analysis.
