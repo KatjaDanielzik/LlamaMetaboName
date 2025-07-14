@@ -83,12 +83,12 @@ N'-Acetyl-L-glutamine (TL_regress)|N-Acetylglutamine|N-Acetylglutamine | process
 |Flavin adenine dinucleotide | FAD | FAD | correctly assigned abbrevation|
 
 # Example usage 
-We applied MetaboliteNameStandardization to a set of ??? metabolite names from untargeted LC-MS, which did not contain any lipids and found that the model sufficiently converted ????/??? in a name that could be recognized by the R RefMet API.
-Although the temperature and ??? are set to low number, reducing hallucinations of the model, we would suggest to follow this workflow: first feed all your metabolite names into a database, filter for unrecognized ones and only use MetaboliteNameStandardization for the remaining ones.
+We applied MetaboliteNameStandardization to a set of 470 metabolite names from untargeted LC-MS, which did **not contain any lipids** and found that the model sufficiently converted 450/470 in a name that could be recognized by the R RefMet API.
+Although the temperature, top_k and top_p and  are set to zero, reducing hallucinations of the model, we would suggest to follow this workflow: first feed all your metabolite names into a database, filter for unrecognized ones and only use LlamaMetaboName for the remaining ones. This also helps to reduce the enviromental burden as less tokens are generated. 
 
 # Known model behaviors
 Preferable:
-- Works good for standardizing punctuations formats (e.g. spacing, capitalization, hyphenation, symbols)
+- Works well for standardizing punctuations formats (e.g. spacing, capitalization, hyphenation, symbols)
 - Returns only one standardized metabolite per input row
 - Returns a vector 
 - Removes additional prefixes
