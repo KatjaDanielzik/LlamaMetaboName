@@ -1,6 +1,6 @@
 Title: MetaboNameStandard
 Authors: 
-  c(person(given="Willson",family="Tijoe",role=c("aut","cre")),
+  c(person(given="Willson",family="Tjioe",role=c("aut","cre")),
     person(given="Katja",family= "Danielzik", email="katja.danielzik@uni-due.de", 
            role = c("aut"),
            comment=c(ORCID="0009-0007-5021-6212")))
