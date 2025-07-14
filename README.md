@@ -84,7 +84,9 @@ N'-Acetyl-L-glutamine (TL_regress)|N-Acetylglutamine|N-Acetylglutamine | process
 
 # Example usage 
 We applied MetaboliteNameStandardization to a set of 470 metabolite names from untargeted LC-MS, which did **not contain any lipids** and found that the model sufficiently converted 450/470 in a name that could be recognized by the R RefMet API.
-Although the temperature, top_k and top_p and  are set to zero, reducing hallucinations of the model, we would suggest to follow this workflow: first feed all your metabolite names into a database, filter for unrecognized ones and only use LlamaMetaboName for the remaining ones. This also helps to reduce the enviromental burden as less tokens are generated. 
+Although the temperature, top_k and top_p and  are set to zero, reducing hallucinations of the model, we would suggest to **follow this workflow:**
+
+First feed all your metabolite names into a database, filter for unrecognized ones and only use LlamaMetaboName for the remaining ones. This also helps to reduce the enviromental burden as less tokens are generated. 
 
 # Known model behaviors
 Preferable:
