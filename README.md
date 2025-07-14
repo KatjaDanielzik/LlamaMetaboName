@@ -3,7 +3,7 @@
 Llama 3.3 is licensed under the Llama 3.3 Community License, Copyright © Meta Platforms, Inc. All Rights Reserved.
 
 # Overview
-One of the crucial steps in the Metabolomics workflow is the matching of metabolite names provided by a collaborator to database entry, to for example retrieve IDs for downstream analysis.
+One of the crucial steps in the Metabolomics workflow is the matching of metabolite names, provided by a collaborator, to database entries, to for example retrieve IDs for downstream analysis.
 Although most database APIs accept multiple synonyms, some metabolite names remain unmatched although a human would find the respective entry in the database. Additionally multiple file conversions during the life cycle of a dataset might introduce special characters like "?" that impede recognition by databases.
 
 Large Language models like Llama3.3 have learned which metabolite names are often used in published literature (i.e. metabolite names without special characters) and could assist in the standardization of metabolite names that would otherwise consume a lot of time by hand.
@@ -67,10 +67,33 @@ non_standardized$LLM_standardized <- rollama::query(queries,
 non_standardized
 ```
 
+## Example output with comments
+|Raw metabolite name| LlamaMetaboName output | Refmet Entry | Comment |
+|---|---|---|---|
+|Isocitric acid|Isocitrate|Isocitric acid| -acid/ -ate dilemma|
+|5?-Deoxy-5?-(methylthio)adenosine |5'-Deoxy-5'-(methylthio)adenosine|5'-Methylthioadenosine| Removal of question marks (?)|
+N'-Acetyl-L-glutamine (TL_regress)|N-Acetylglutamine|N-Acetylglutamine | processing comments (in brackets) removed|
+|N-CARBAMOYL-DL-ASPARTIC ACID |N-Carbamoyl-aspartic acid|N-Carbamoylaspartic acid|upper case -> lower case for consistent capitalization|
+|UDP| UDPGlucose|UDP-glucose|Hallucination: 2 different metabolite (UDP vs UDP-glucose)|
+|TTP|dTTP|dTTP| Hallucination: Nucleotide -> deoxy-Nucleotide|
+|N'-Acetyl-L-glutamine|N-Acetylglutamine|N-Acetylglutamine| removal of Apostrophe (')|
+|N_N_N-Trimethyllysine|Trimethyllysine|N-6-Trimethyllysine| removal of underscore|
+|Fructose(26)bisphosphate|Fructose-2,6-bisphosphate|Fructose 2,6-bisphosphate| added missing comma and hyphen|
+|1;7-Dimethylxanthine|1,7-Dimethylxanthine|Paraxanthine| conversion of semicolon to comma|
+|Flavin adenine dinucleotide | FAD | FAD | correctly assigned abbrevation|
+
 # Example usage 
 We applied MetaboliteNameStandardization to a set of ??? metabolite names from untargeted LC-MS, which did not contain any lipids and found that the model sufficiently converted ????/??? in a name that could be recognized by the R RefMet API.
 Although the temperature and ??? are set to low number, reducing hallucinations of the model, we would suggest to follow this workflow: first feed all your metabolite names into a database, filter for unrecognized ones and only use MetaboliteNameStandardization for the remaining ones.
 
 # Limitations
-- Problems that we are aware of:
-- Nucleotide: sometimes alterations of deoxy Nucleotides (e.g. dATP) to Nucleotides (ATP) or vice versa. As we found that many databases are not consistent either in their IDs regarding these metabolites this behavior might be caused by the database entries. 
+Good:
+- Works good for standardizing punctuations formats (e.g. spacing, capitalization, hyphenation, symbols)
+- Returns only one standardized metabolite per input row
+- Returns a vector 
+- Removes additional prefixes
+
+Limitation:
+- often hallucinates UDP -> UDP-Glucose. UDP and UDP-Glucose are very different metabolites (structure and function)
+- LlamaMetaboName nearly always transforms the suffix -ate to -acid. Metabolites with transformed suffixes are still mostly recognized by the database RefMet(via RefMet API in R)
+- LlamaMetaboName frequently converts abbrevated nucleotides (e.g. ATP, GTP, CTP, TTP) to the abbrevations of there deoxygenated forms (e.g. dATP, dGTP, dCTP, dTTP). This happens especially for TTP. But we found that many databases also not sufficiently discriminate between these two forms of nucleotides. 
