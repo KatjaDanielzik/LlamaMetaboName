@@ -8,6 +8,11 @@ Although most database APIs accept multiple synonyms, some metabolite names rema
 
 Large Language models like Llama3.3 have learned which metabolite names are often used in published literature (i.e. metabolite names without special characters) and could assist in the standardization of metabolite names that would otherwise consume a lot of time by hand.
 
+## Example specifications in modelfile
+While the system prompt itself is designed to be generalizable for other metabolite names the statements under **Additional information** were tailored to our example set of metabolite names.
+**Additional information** refers to the examples that are listed at the bottom of the model file in the format **MESSAGE user <metabolite name>** **MESSAGE assistant <standardized name>**.
+Other datasets may need adjustment of the additional informations and/or examples. 
+
 # Modelfile specifications
 
 System prompt and parameter settings for llama3.3 70B.
@@ -46,7 +51,7 @@ data <- read.csv("path to folder")
 refmet_output <- RefMet::refmet_map_df(data$metabolite)
 
 # filter for missing metabolite names
-non_standardized <- refmet_output%>%filter(Standardized.name=="-")
+llm_standardized <- refmet_output%>%filter(Standardized.name=="-")
 
 # using MetaboNameStandard
 ## Selecting model
@@ -58,13 +63,16 @@ queries <- rollama::make_query(
               prompt = "Only output the standardized metabolite name without any explanation.")
 
 # run query and store query results as new column
-non_standardized$LLM_standardized <- rollama::query(queries,
+llm_standardized$LLM_standardized <- rollama::query(queries,
                                                       screen = FALSE, 
                                                       output = "text"
                                                         )
 
 # Print results
-non_standardized
+llm_standardized
+
+# hand over standardized names to RefMet
+refmet_LLM_standardized <- refmet_map_df(llm_standardized$LLM_standardized)
 ```
 
 ## Example output with comments
