@@ -10,7 +10,7 @@ Large Language models like Llama3.3 have learned which metabolite names are ofte
 
 ## Example specifications in modelfile
 While the system prompt itself is designed to be generalizable for other metabolite names the statements under **Additional information** were tailored to our example set of metabolite names.
-**Additional information** refers to the examples that are listed at the bottom of the model file in the format **MESSAGE user <metabolite name>** **MESSAGE assistant <standardized name>**.
+**Additional information** refers to the examples that are listed at the bottom of the model file in the format **MESSAGE user metabolite name** **MESSAGE assistant <<standardized name>>**.
 Other datasets may need adjustment of the additional informations and/or examples. 
 
 # Modelfile specifications
