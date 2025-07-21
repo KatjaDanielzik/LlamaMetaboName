@@ -24,6 +24,7 @@ Llama 3.3 70B Requirements:
  
 # Install ollama
 ```{bash}
+# open terminal
 # install ollama
 curl -fsSL https://ollama.com/install.sh | sh
 
@@ -36,6 +37,7 @@ ollama list
 
 # Example workflow in R with rollama (ollama API) and RefMet
 ```{r}
+# R script
 # install and load needed packages
 if(!require("rollama")) install_github("JBGruber/rollama")
 if (!require("RefMet")) install_github("metabolomicsworkbench/RefMet")
