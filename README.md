@@ -9,7 +9,7 @@ Although most database APIs accept multiple synonyms, some metabolite names rema
 Large Language models like Llama 3.3 have learned which metabolite names are often used in published literature (i.e. metabolite names without special characters) and could assist in the standardization of metabolite names that would otherwise consume a lot of time by hand.
 
 To elevate reproducibility of the system prompt behavior we chose to built the system prompt on a locally running version of Llama 3.3 70B hosted by ollama. 
-With the rollama package the system prompt is integrateable into script based workflow in R. 
+With the rollama package the system prompt is integrateable into script based workflows in R. 
 
 ## Example specifications in modelfile
 While the system prompt itself is designed to be generalizable for other metabolite names the statements under **Additional information** in the .modelfile were tailored to our example set of metabolite names.
