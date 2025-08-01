@@ -4,7 +4,7 @@ Authors:
     person(given="Katja",family= "Danielzik", email="katja.danielzik@uni-due.de", 
            role = c("aut"),
            comment=c(ORCID="0009-0007-5021-6212")))
-URL: https://github.com/KatjaDanielzik/MetaboNameStandard
+URL: https://github.com/KatjaDanielzik/LlamaMetaboName
 License: GPL (>= 3)
 Depends: 
   Llama3.3 70B Instruct
