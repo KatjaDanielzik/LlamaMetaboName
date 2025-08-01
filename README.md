@@ -1,4 +1,4 @@
-# LlamaMetaboName: a system prompt for Llama3.3 to facilitate standardization of metabolite names
+# LlamaMetaboName: a system prompt for Llama 3.3 70B to facilitate standardization of metabolite names
 
 Llama 3.3 is licensed under the Llama 3.3 Community License, Copyright © Meta Platforms, Inc. All Rights Reserved.
 
