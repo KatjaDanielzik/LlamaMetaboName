@@ -28,6 +28,12 @@ Other datasets may need adjustment of the additional informations and/or example
 - LlamaMetaboName nearly always transforms the suffix -ate to -acid. Metabolites with transformed suffixes are still mostly recognized by the database RefMet(via RefMet API in R)
 - LlamaMetaboName frequently converts abbrevated nucleotides (e.g. ATP, GTP, CTP, TTP) to the abbrevations of there deoxygenated forms (e.g. dATP, dGTP, dCTP, dTTP). This happens especially for TTP. But we found that many databases also not sufficiently discriminate between these two forms of nucleotides. 
 
+# Example usage 
+We applied LlamaMetaboName to a set of 470 metabolite names from untargeted LC-MS, which did **not contain any lipids** and found that the model sufficiently converted 450/470 in a name that could be recognized by the R RefMet API.
+Although the temperature, top_k and top_p and  are set to zero, reducing hallucinations of the model, we would suggest to **follow this workflow:**
+
+First feed all your metabolite names into a database, filter for unrecognized ones and only use LlamaMetaboName for the remaining ones. This also helps to reduce the enviromental burden as less tokens are generated. 
+
 # Technical requirements for Llama 3.3 70B
 Llama 3.3 70B Requirements:
 - GPU Minimum: 24GB VRAM Recommended: NVIDIA GPU with at least 35GB VRAM (e.g., A100 or H100) Optimal setup: Dual NVIDIA RTX 3090 (48GB combined VRAM)
@@ -105,8 +111,3 @@ N'-Acetyl-L-glutamine (TL_regress)|N-Acetylglutamine|N-Acetylglutamine | process
 |1;7-Dimethylxanthine|1,7-Dimethylxanthine|Paraxanthine| conversion of semicolon to comma|
 |Flavin adenine dinucleotide | FAD | FAD | correctly assigned abbrevation|
 
-# Example usage 
-We applied MetaboliteNameStandardization to a set of 470 metabolite names from untargeted LC-MS, which did **not contain any lipids** and found that the model sufficiently converted 450/470 in a name that could be recognized by the R RefMet API.
-Although the temperature, top_k and top_p and  are set to zero, reducing hallucinations of the model, we would suggest to **follow this workflow:**
-
-First feed all your metabolite names into a database, filter for unrecognized ones and only use LlamaMetaboName for the remaining ones. This also helps to reduce the enviromental burden as less tokens are generated. 
