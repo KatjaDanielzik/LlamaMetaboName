@@ -26,7 +26,7 @@ Other datasets may need adjustment of the additional informations and/or example
 **Limitations:**
 - often hallucinates UDP -> UDP-Glucose. UDP and UDP-Glucose are very different metabolites (structure and function)
 - LlamaMetaboName nearly always transforms the suffix -ate to -acid. Metabolites with transformed suffixes are still mostly recognized by the database RefMet(via RefMet API in R)
-- LlamaMetaboName frequently converts abbrevated nucleotides (e.g. ATP, GTP, CTP, TTP) to the abbrevations of there deoxygenated forms (e.g. dATP, dGTP, dCTP, dTTP). This happens especially for TTP. But we found that many databases also not sufficiently discriminate between these two forms of nucleotides. 
+- LlamaMetaboName frequently converts abbrevated nucleotides (e.g. ATP, GTP, CTP, TTP) to the abbrevations of their deoxygenated forms (e.g. dATP, dGTP, dCTP, dTTP). This happens especially for TTP. But we found that many databases also not sufficiently discriminate between these two forms of nucleotides. 
 
 # Example usage 
 We applied LlamaMetaboName to a set of 470 metabolite names from untargeted LC-MS, which did **not contain any lipids** and found that the model sufficiently converted 450/470 in a name that could be recognized by the R RefMet API.
