@@ -1,4 +1,4 @@
-Title: MetaboNameStandard
+Title: LlamaMetaboName
 Authors: 
   c(person(given="Willson",family="Tjioe",role=c("aut","cre")),
     person(given="Katja",family= "Danielzik", email="katja.danielzik@uni-due.de", 
