@@ -49,7 +49,7 @@ Llama 3.3 70B Requirements:
 curl -fsSL https://ollama.com/install.sh | sh
 
 # build model from modelfile
-ollama create MetaboNameStandard --file ~/<path>/MetaboNameStandard.modelfile
+ollama create MetaboNameStandard --file ~/<path>/LlamaMetaboName.modelfile
 
 # check that model was created
 ollama list
