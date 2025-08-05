@@ -24,6 +24,7 @@ Other datasets may need adjustment of the additional informations and/or example
 - Removes additional prefixes
 
 **Limitations:**
+- was developed on a data set **without lipids**
 - often hallucinates UDP -> UDP-Glucose. UDP and UDP-Glucose are very different metabolites (structure and function)
 - LlamaMetaboName nearly always transforms the suffix -ate to -acid. Metabolites with transformed suffixes are still mostly recognized by the database RefMet(via RefMet API in R)
 - LlamaMetaboName frequently converts abbrevated nucleotides (e.g. ATP, GTP, CTP, TTP) to the abbrevations of their deoxygenated forms (e.g. dATP, dGTP, dCTP, dTTP). This happens especially for TTP. But we found that many databases also not sufficiently discriminate between these two forms of nucleotides. 
@@ -76,7 +77,7 @@ llm_standardized <- refmet_output%>%filter(Standardized.name=="-")
 
 # using MetaboNameStandard
 ## Selecting model
-rollama::options(rollama_model = "MetaboNameStandard")
+rollama::options(rollama_model = "LlamaMetaboName")
 
 # Build prompt query
 queries <- rollama::make_query(
